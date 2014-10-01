@@ -1,4 +1,6 @@
 <h1>Admin User Management</h1>
+<%= paginate @users %>
+
 <% @users.each do |user| %>
 <h2><%= user.full_name %></h2>
 <h3><%= user.email %></h3>
