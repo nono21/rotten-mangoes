@@ -1,8 +1,8 @@
 <h1>Admin User Management</h1>
 <%= paginate @users %>
-<%= link_to "Add new user", new_user_path %>
+<%= link_to "Add new user", new_admin_user_path %>
 <% @users.each do |user| %>
-<h2><%= user.full_name %></h2>
+<h2><%= user.full_name %> | (<%= link_to "Edit", edit_admin_user_path(user) %>, <%= link_to "Delete", admin_user_path(user), data: {:confirm => "You sure?"}, method: :delete %>)</h2>
 <h3><%= user.email %></h3>
 <div>----------------------------------</div>
 <% end %>
