@@ -32,6 +32,31 @@ class Movie < ActiveRecord::Base
     end
   end
 
+  # scope :duration, ->(limit1,limit2) { where('duration BETWEEN ? AND ?', limit1,limit2)} if limit1 && limit1
+
+  def self.search(search)
+    title_s = search["title"];
+    director_s = search["author"];
+    duration = search["duration"]
+
+    if search
+      where('title LIKE ?', "%#{title_s}%")
+      .where('director LIKE?', "%#{director_s}%")
+      case duration 
+        when 'Under 90 minutes'
+          where('runtime_in_minutes < 90')
+        when 'Between 90 and 120 min'
+          where('runtime_in_minutes > 90 AND runtime_in_minutes <= 120 ')
+        when 'Over 120 min'
+          where('runtime_in_minutes > 120')
+        else
+         Movie.all 
+      end
+    else
+      Movie.all
+    end
+  end
+
   protected
 
   def release_date_is_in_the_future

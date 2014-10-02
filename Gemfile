@@ -31,6 +31,8 @@ gem 'spring',        group: :development
  gem 'carrierwave'
  gem "rmagick"
  gem 'kaminari'
+ gem 'pry'
+ gem 'pry-nav'
 
 # Use unicorn as the app server
 # gem 'unicorn'
