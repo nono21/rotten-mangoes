@@ -38,6 +38,7 @@ before_action :authorize
   def destroy
     @user = User.find(params[:id])
     @user.destroy
+    UserMailer.delete_notify(@user).deliver
     redirect_to admin_users_path
   end
 
