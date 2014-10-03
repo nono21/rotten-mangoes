@@ -10,14 +10,4 @@
     <%= submit_tag "Search", :name => nil %>
   </p>
 <% end %>
-<% @movies.each do |movie| %>
-  <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
-  <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <%= image_tag movie.image_url(:thumb) if movie.image? %>
-  <h3><%= formatted_date(movie.release_date) %></h3>
-  <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-  <p><%= movie.description %></p><br/>
-  <p>Review:<%= movie.review_average %>/10</p>
-  <hr>
-
-<% end %>
+<%= render 'movie' %>
