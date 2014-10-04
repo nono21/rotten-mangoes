@@ -5,11 +5,10 @@ class User < ActiveRecord::Base
 
   def delete_reviews
     reviews.destroy_all
-    
   end
 
   def full_name
-    "#{firstname} #{lastname}"
+    "#{firstname.capitalize} #{lastname.capitalize}"
   end
 
 end

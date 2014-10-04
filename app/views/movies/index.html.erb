@@ -1,13 +1,2 @@
-<h1>Rotten Mangoes</h1>
-<%= link_to "Submit a movie!", new_movie_path %>
-<hr>
-<%= paginate @movies %>
-<%= form_tag movies_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :title, params[:title], placeholder: 'Title' %><br/>
-    <%= text_field_tag :director, params[:director], placeholder: 'Director' %><br/>
-    <%= select_tag :duration, options_for_select([[],['Under 90 minutes'],['Between 90 and 120 min'],['Over 120 min']]) %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
-<%= render 'movie' %>
+<%= render 'movies' %>
+

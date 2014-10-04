@@ -31,9 +31,7 @@ class Movie < ActiveRecord::Base
       return '0'
     end
   end
-
-  scope :by_title, -> (title) { where('title LIKE ?', "%#{title}%")}
-  scope :by_director, -> (director) { where('director LIKE ?', "%#{director}%") }
+  scope :by_search, -> (query) { where('title LIKE ? OR director LIKE ?', "%#{query}%", "%#{query}%") }
   scope :by_duration, -> (limit1, limit2) { where('runtime_in_minutes BETWEEN ? AND ?', limit1,limit2) }
 
 

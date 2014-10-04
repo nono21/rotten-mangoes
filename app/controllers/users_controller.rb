@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id]) 
+  end
+
   protected
   def user_params
     params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)

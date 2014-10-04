@@ -2,8 +2,7 @@ class MoviesController < ApplicationController
   
   def index
     @movies = Movie.where(nil).page(params[:page]).per(5)
-    @movies = @movies.by_title(params[:title]) if params[:title].present?
-    @movies = @movies.by_director(params[:director]) if params[:director].present?
+    @movies = @movies.by_search(params[:query]) if params[:query].present?
     case params[:duration]
     when 'Under 90 minutes'
       limit1 = 0
@@ -13,6 +12,9 @@ class MoviesController < ApplicationController
       limit2 = 120
     when 'Over 120 min'
       limit1 = 121
+      limit2 = 9999
+    else
+      limit1 = 0
       limit2 = 9999   
     end
     @movies = @movies.by_duration(limit1, limit2) if params[:duration].present?
